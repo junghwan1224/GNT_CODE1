@@ -3,32 +3,25 @@ package ps19637;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.StringTokenizer;
 
 /*
  * https://www.acmicpc.net/problem/19637
  * */
-class Grade implements Comparable<Grade> {
+class Node {
 	int point;
 	String title;
 	
-	public Grade(int point, String title) {
+	public Node(int point, String title) {
 		this.point = point;
 		this.title = title;
-	}
-	
-	@Override
-	public int compareTo(Grade g) {
-		return this.point - g.point;
 	}
 }
 
 public class Main {
 	static int N, M;
-	static ArrayList<Grade> list;
-	static int MAX = 1000000001;
+	static Node[] arr;
+	static String[] titles;
 	static StringBuffer sb;
 
 	public static void main(String[] args) throws IOException {
@@ -37,21 +30,44 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
-		list = new ArrayList<Grade>();
+		arr = new Node[N + 1];
+		titles = new String[M];
 		sb = new StringBuffer();
-		
-		for(int i = 0; i < N; i++) {
+
+		for(int i = 1; i <= N; i++) {
 			st = new StringTokenizer(br.readLine());
 			String t = st.nextToken();
 			int p = Integer.parseInt(st.nextToken());
-			list.add(new Grade(p, t));
+
+			arr[i] = new Node(p, t);
 		}
-		
-		Collections.sort(list);
+		arr[0] = new Node(0, arr[1].title);
 		
 		for(int i = 0; i < M; i++) {
 			int n = Integer.parseInt(br.readLine());
+
+			int left = 0;
+			int right = N;
+			int idx = 0;
+
+			while(left <= right) {
+				int mid = (left + right) / 2;
+
+				if(n <= arr[mid].point) {
+					idx = mid;
+					right = mid - 1;
+				}
+				else {
+					left = mid + 1;
+				}
+			}
+
+			titles[i] = arr[idx].title;
+			sb.append(titles[i]).append("\n");
 		}
+
+		System.out.println(sb);
 	}
 
 }
+
