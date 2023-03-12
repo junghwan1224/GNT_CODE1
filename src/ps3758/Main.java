@@ -13,9 +13,9 @@ import java.util.StringTokenizer;
  * */
 class Node implements Comparable<Node> {
     int id;
-    int totalScore; // ìµœì¢… ì ìˆ˜
-    int submitCnt; // ì œì¶œ íšŸìˆ˜
-    int submitTime; // ì œì¶œ ì‹œê°„
+    int totalScore; // ÃÖÁ¾ Á¡¼ö
+    int submitCnt; // Á¦Ãâ È½¼ö
+    int submitTime; // Á¦Ãâ ½Ã°£
 
     public Node(int id, int t, int sc, int st) {
         this.id = id;
@@ -54,10 +54,10 @@ public class Main {
 
         while(T > 0) {
             st = new StringTokenizer(br.readLine());
-            int n = Integer.parseInt(st.nextToken()); // íŒ€ì˜ ê°¯ìˆ˜
-            int k = Integer.parseInt(st.nextToken()); // ë¬¸ì œì˜ ê°¯ìˆ˜
-            int t = Integer.parseInt(st.nextToken()); // ì†Œì†íŒ€  ID
-            int m = Integer.parseInt(st.nextToken()); // ë¡œê·¸ ì—”íŠ¸ë¦¬ ìˆ˜
+            int n = Integer.parseInt(st.nextToken()); // ÆÀÀÇ °¹¼ö
+            int k = Integer.parseInt(st.nextToken()); // ¹®Á¦ÀÇ °¹¼ö
+            int t = Integer.parseInt(st.nextToken()); // ¼Ò¼ÓÆÀ  ID
+            int m = Integer.parseInt(st.nextToken()); // ·Î±× ¿£Æ®¸® ¼ö
 
             map = new HashMap<>();
             list = new ArrayList<>();
@@ -67,9 +67,9 @@ public class Main {
 
             for(int i = 0; i < m; i++) {
                 st = new StringTokenizer(br.readLine());
-                int id = Integer.parseInt(st.nextToken()); // íŒ€ì˜ ID
-                int pnum = Integer.parseInt(st.nextToken()); // ë¬¸ì œ ë²ˆí˜¸
-                int score = Integer.parseInt(st.nextToken()); // íšë“í•œ ì ìˆ˜
+                int id = Integer.parseInt(st.nextToken()); // ÆÀÀÇ ID
+                int pnum = Integer.parseInt(st.nextToken()); // ¹®Á¦ ¹øÈ£
+                int score = Integer.parseInt(st.nextToken()); // È¹µæÇÑ Á¡¼ö
 
                 problem[id][pnum] = problem[id][pnum] < score ? score : problem[id][pnum];
                 last[id] = i;
